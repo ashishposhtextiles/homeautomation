@@ -1,38 +1,58 @@
-import { Home, Settings, Shield } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Settings, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-slate-700 bg-slate-900/95 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur-md">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Home className="w-8 h-8 text-blue-500" />
-            <span className="text-xl font-bold text-white">SmartHome</span>
+            <span className="text-xl font-bold text-foreground">
+              Smart Control
+            </span>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#" className="text-slate-300 hover:text-white transition-colors">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Dashboard
             </a>
-            <a href="#" className="text-slate-300 hover:text-white transition-colors">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Devices
             </a>
-            <a href="#" className="text-slate-300 hover:text-white transition-colors">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Automation
             </a>
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-slate-300 hover:text-white">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-foreground"
+            >
               <Shield className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-slate-300 hover:text-white">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-foreground"
+            >
               <Settings className="w-5 h-5" />
             </Button>
+            <ThemeToggle />
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -26,37 +26,39 @@ export function LightControl() {
   const activeLights = lights.filter((light) => light.status).length
 
   return (
-    <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+    <Card className="bg-card border">
       <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Lightbulb className="w-5 h-5 text-yellow-500" />
+        <CardTitle className="text-foreground flex items-center gap-2">
+          <Lightbulb className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
           Smart Lights
         </CardTitle>
-        <CardDescription className="text-slate-400">
+        <CardDescription>
           {activeLights} of {lights.length} lights on
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {lights.map((light) => (
-          <div key={light.id} className="p-3 rounded-lg bg-slate-700/30">
+          <div key={light.id} className="p-3 rounded-lg bg-muted/50">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 {light.status ? (
-                  <Lightbulb className="w-4 h-4 text-yellow-500" />
+                  <Lightbulb className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
                 ) : (
-                  <LightbulbOff className="w-4 h-4 text-slate-500" />
+                  <LightbulbOff className="w-4 h-4 text-muted-foreground" />
                 )}
                 <div>
-                  <p className="text-white font-medium">{light.name}</p>
+                  <p className="text-foreground font-medium">{light.name}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <Badge
                       variant={light.status ? "default" : "secondary"}
-                      className={light.status ? "bg-yellow-500/20 text-yellow-400" : "bg-slate-600 text-slate-400"}
+                      className={
+                        light.status ? "bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200" : ""
+                      }
                     >
                       {light.status ? "On" : "Off"}
                     </Badge>
                     {light.status && (
-                      <Badge className="bg-blue-500/20 text-blue-400">
+                      <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
                         <Palette className="w-3 h-3 mr-1" />
                         {light.color}
                       </Badge>
@@ -70,8 +72,8 @@ export function LightControl() {
             {light.status && (
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-400">Brightness</span>
-                  <span className="text-slate-300">{light.brightness}%</span>
+                  <span className="text-muted-foreground">Brightness</span>
+                  <span className="text-foreground">{light.brightness}%</span>
                 </div>
                 <Slider
                   value={[light.brightness]}

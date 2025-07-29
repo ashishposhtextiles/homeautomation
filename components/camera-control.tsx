@@ -33,36 +33,36 @@ export function CameraControl() {
   const recordingCameras = cameras.filter((camera) => camera.recording).length
 
   return (
-    <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+    <Card className="bg-card border">
       <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Camera className="w-5 h-5 text-blue-500" />
+        <CardTitle className="text-foreground flex items-center gap-2">
+          <Camera className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           Security Cameras
         </CardTitle>
-        <CardDescription className="text-slate-400">
+        <CardDescription>
           {activeCameras} of {cameras.length} cameras active
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {cameras.map((camera) => (
-          <div key={camera.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-700/30">
+          <div key={camera.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
             <div className="flex items-center gap-3">
               {camera.status ? (
-                <Camera className="w-4 h-4 text-green-500" />
+                <Camera className="w-4 h-4 text-green-600 dark:text-green-400" />
               ) : (
-                <CameraOff className="w-4 h-4 text-slate-500" />
+                <CameraOff className="w-4 h-4 text-muted-foreground" />
               )}
               <div>
-                <p className="text-white font-medium">{camera.name}</p>
+                <p className="text-foreground font-medium">{camera.name}</p>
                 <div className="flex items-center gap-2 mt-1">
                   <Badge
                     variant={camera.status ? "default" : "secondary"}
-                    className={camera.status ? "bg-green-500/20 text-green-400" : "bg-slate-600 text-slate-400"}
+                    className={camera.status ? "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200" : ""}
                   >
                     {camera.status ? "Online" : "Offline"}
                   </Badge>
                   {camera.recording && (
-                    <Badge className="bg-red-500/20 text-red-400">
+                    <Badge className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200">
                       <Video className="w-3 h-3 mr-1" />
                       Recording
                     </Badge>
@@ -74,12 +74,12 @@ export function CameraControl() {
               {camera.status && (
                 <button
                   onClick={() => toggleRecording(camera.id)}
-                  className="p-1 rounded hover:bg-slate-600 transition-colors"
+                  className="p-1 rounded hover:bg-muted transition-colors"
                 >
                   {camera.recording ? (
-                    <Video className="w-4 h-4 text-red-400" />
+                    <Video className="w-4 h-4 text-red-600 dark:text-red-400" />
                   ) : (
-                    <VideoOff className="w-4 h-4 text-slate-400" />
+                    <VideoOff className="w-4 h-4 text-muted-foreground" />
                   )}
                 </button>
               )}
